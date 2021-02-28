@@ -1,10 +1,12 @@
 FROM alpine:latest
 
-MAINTAINER alex <alexwhen@gmail.com> 
+MAINTAINER imnavas <imnavas@yahoo.es>
 
-RUN apk --update add nginx
+RUN apk --update add nginx && \
+    mkdir -p /run/nginx
 
-COPY 2048 /usr/share/nginx/html
+COPY 2048 /var/lib/nginx/html
+COPY nginx.conf /etc/nginx
 
 EXPOSE 80
 
